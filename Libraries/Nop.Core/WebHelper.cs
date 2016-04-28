@@ -36,7 +36,11 @@ namespace Nop.Core
         #endregion
 
         #region Utilities
-
+        /// <summary>
+        /// Request是否可用
+        /// </summary>
+        /// <param name="httpContext">httpContext对象</param>
+        /// <returns>返回真，可用；返回假，不可用</returns>
         protected virtual Boolean IsRequestAvailable(HttpContextBase httpContext)
         {
             if (httpContext == null)
@@ -209,15 +213,15 @@ namespace Nop.Core
         }
 
         /// <summary>
-        /// Gets a value indicating whether current connection is secured
+        /// 获取一个值，标识当前连接是否安全
         /// </summary>
-        /// <returns>true - secured, false - not secured</returns>
+        /// <returns>返回真 - 安全, 返回假 - 不安全</returns>
         public virtual bool IsCurrentConnectionSecured()
         {
             bool useSsl = false;
             if (IsRequestAvailable(_httpContext))
             {
-                //when your hosting uses a load balancer on their server then the Request.IsSecureConnection is never got set to true
+                //当主机使用的负载平衡器在服务器请求。IsSecureConnection 绝不能设置为true。
 
                 //1. use HTTP_CLUSTER_HTTPS?
                 if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["Use_HTTP_CLUSTER_HTTPS"]) &&
@@ -241,10 +245,10 @@ namespace Nop.Core
         }
         
         /// <summary>
-        /// Gets server variable by name
+        /// 获取服务器变量的名称
         /// </summary>
         /// <param name="name">Name</param>
-        /// <returns>Server variable</returns>
+        /// <returns>服务器变量</returns>
         public virtual string ServerVariables(string name)
         {
             string result = string.Empty;
@@ -286,10 +290,10 @@ namespace Nop.Core
 
             if (DataSettingsHelper.DatabaseIsInstalled())
             {
-                #region Database is installed
+                #region 数据库已被安装
 
                 //let's resolve IWorkContext  here.
-                //Do not inject it via contructor because it'll cause circular references
+                //不要通过构造函数注入将会导致循环引用。
                 var storeContext = EngineContext.Current.Resolve<IStoreContext>();
                 var currentStore = storeContext.CurrentStore;
                 if (currentStore == null)
@@ -330,7 +334,7 @@ namespace Nop.Core
             }
             else
             {
-                #region Database is not installed
+                #region 数据库未安装
                 if (useSsl)
                 {
                     //Secure URL is not specified.
@@ -347,9 +351,9 @@ namespace Nop.Core
         }
         
         /// <summary>
-        /// Gets store location
+        /// 获取存储位置
         /// </summary>
-        /// <returns>Store location</returns>
+        /// <returns>存储位置</returns>
         public virtual string GetStoreLocation()
         {
             bool useSsl = IsCurrentConnectionSecured();
@@ -357,10 +361,10 @@ namespace Nop.Core
         }
 
         /// <summary>
-        /// Gets store location
+        /// 获取存储位置
         /// </summary>
-        /// <param name="useSsl">Use SSL</param>
-        /// <returns>Store location</returns>
+        /// <param name="useSsl">是否使用加密套接字协议层</param>
+        /// <returns>存储位置</returns>
         public virtual string GetStoreLocation(bool useSsl)
         {
             //return HostingEnvironment.ApplicationVirtualPath;
