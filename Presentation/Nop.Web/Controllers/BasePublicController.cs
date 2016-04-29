@@ -18,7 +18,7 @@ namespace Nop.Web.Controllers
     {
         protected virtual ActionResult InvokeHttp404()
         {
-            // Call target Controller and pass the routeData.
+            // 调用目标控制器并通过RouteData。Call target Controller and pass the routeData.
             IController errorController = EngineContext.Current.Resolve<CommonController>();
 
             var routeData = new RouteData();

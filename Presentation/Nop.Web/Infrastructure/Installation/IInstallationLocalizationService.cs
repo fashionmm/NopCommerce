@@ -4,33 +4,33 @@ using System.Collections.Generic;
 namespace Nop.Web.Infrastructure.Installation
 {
     /// <summary>
-    /// Localization service for installation process
+    /// 安装过程的本地化服务接口
     /// </summary>
     public partial interface IInstallationLocalizationService
     {
         /// <summary>
-        /// Get locale resource value
+        /// 获取本地资源值
         /// </summary>
-        /// <param name="resourceName">Resource name</param>
-        /// <returns>Resource value</returns>
+        /// <param name="resourceName">资源名称</param>
+        /// <returns>资源值</returns>
         string GetResource(string resourceName);
 
         /// <summary>
-        /// Get current language for the installation page
+        /// 获取安装页的当前语言。
         /// </summary>
-        /// <returns>Current language</returns>
+        /// <returns>当前语言</returns>
         InstallationLanguage GetCurrentLanguage();
 
         /// <summary>
-        /// Save a language for the installation page
+        /// 保存安装页的语言。
         /// </summary>
-        /// <param name="languageCode">Language code</param>
+        /// <param name="languageCode">语言编码</param>
         void SaveCurrentLanguage(string languageCode);
 
         /// <summary>
-        /// Get a list of available languages
+        /// 获得可用语言列表。
         /// </summary>
-        /// <returns>Available installation languages</returns>
+        /// <returns>可安装语言</returns>
         IList<InstallationLanguage> GetAvailableLanguages();
     }
 }

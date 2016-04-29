@@ -49,10 +49,10 @@ namespace Nop.Web.Controllers
         }
 
         /// <summary>
-        /// Checks if the specified database exists, returns true if database exists
+        ///检查指定的数据库是否存在，如果存在返回真。 Checks if the specified database exists, returns true if database exists
         /// </summary>
-        /// <param name="connectionString">Connection string</param>
-        /// <returns>Returns true if the database exists.</returns>
+        /// <param name="connectionString">数据库连接字符串</param>
+        /// <returns>如果存在返回真。</returns>
         [NonAction]
         protected bool SqlServerDatabaseExists(string connectionString)
         {
@@ -72,10 +72,10 @@ namespace Nop.Web.Controllers
         }
 
         /// <summary>
-        /// Creates a database on the server.
+        /// 在服务器上创建数据库。
         /// </summary>
-        /// <param name="connectionString">Connection string</param>
-        /// <param name="collation">Server collation; the default one will be used if not specified</param>
+        /// <param name="connectionString">数据库连接字符串</param>
+        /// <param name="collation">服务器排序规则；如果未指定，则将使用默认的。</param>
         /// <returns>Error</returns>
         [NonAction]
         protected string CreateDatabase(string connectionString, string collation)
@@ -153,7 +153,7 @@ namespace Nop.Web.Controllers
             if (DataSettingsHelper.DatabaseIsInstalled())
                 return RedirectToRoute("HomePage");
 
-            //set page timeout to 5 minutes
+            //设置页面超时时间为5分钟。
             this.Server.ScriptTimeout = 300;
 
 

@@ -29,7 +29,7 @@ namespace Nop.Web
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             
-            //register custom routes (plugins, etc)
+            //注册自定义路由(插件等)
             var routePublisher = EngineContext.Current.Resolve<IRoutePublisher>();
             routePublisher.RegisterRoutes(routes);
             
@@ -46,15 +46,15 @@ namespace Nop.Web
             //disable "X-AspNetMvc-Version" header name
             MvcHandler.DisableMvcResponseHeader = true;
 
-            //initialize engine context
+            //初始化EngineContext上下文
             EngineContext.Initialize(false);
 
             bool databaseInstalled = DataSettingsHelper.DatabaseIsInstalled();
             if (databaseInstalled)
             {
-                //remove all view engines
+                //移除所有视图引擎
                 ViewEngines.Engines.Clear();
-                //except the themeable razor view engine we use
+                //除了主题化的Razor视图引擎外。except the themeable razor view engine we use
                 ViewEngines.Engines.Add(new ThemeableRazorViewEngine());
             }
 

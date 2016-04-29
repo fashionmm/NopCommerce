@@ -11,25 +11,25 @@ using Nop.Core.Infrastructure;
 namespace Nop.Web.Infrastructure.Installation
 {
     /// <summary>
-    /// Localization service for installation process
+    /// 安装过程的本地化服务
     /// </summary>
     public partial class InstallationLocalizationService : IInstallationLocalizationService
     {
         /// <summary>
-        /// Cookie name to language for the installation page
+        /// 安装页语言的Cookie名称。Cookie name to language for the installation page
         /// </summary>
         private const string LanguageCookieName = "nop.installation.lang";
-
+        
         /// <summary>
-        /// Available languages
+        /// 可用语言列表
         /// </summary>
         private IList<InstallationLanguage> _availableLanguages;
 
         /// <summary>
-        /// Get locale resource value
+        /// 获取本地资源值
         /// </summary>
-        /// <param name="resourceName">Resource name</param>
-        /// <returns>Resource value</returns>
+        /// <param name="resourceName">资源名称</param>
+        /// <returns>资源值</returns>
         public string GetResource(string resourceName)
         {
             var language = GetCurrentLanguage();
@@ -47,9 +47,9 @@ namespace Nop.Web.Infrastructure.Installation
         }
 
         /// <summary>
-        /// Get current language for the installation page
+        /// 获取安装页的当前语言。
         /// </summary>
-        /// <returns>Current language</returns>
+        /// <returns>当前语言</returns>
         public virtual InstallationLanguage GetCurrentLanguage()
         {
            var httpContext = EngineContext.Current.Resolve<HttpContextBase>();
@@ -59,7 +59,7 @@ namespace Nop.Web.Infrastructure.Installation
             if (cookie != null && !String.IsNullOrEmpty(cookie.Value))
                 cookieLanguageCode = cookie.Value;
 
-            //ensure it's available (it could be delete since the previous installation)
+            //确保可用 (it could be delete since the previous installation)
             var availableLanguages = GetAvailableLanguages();
 
             var language = availableLanguages
@@ -92,9 +92,9 @@ namespace Nop.Web.Infrastructure.Installation
         }
 
         /// <summary>
-        /// Save a language for the installation page
+        /// 保存安装页的语言。
         /// </summary>
-        /// <param name="languageCode">Language code</param>
+        /// <param name="languageCode">语言编码</param>
         public virtual void SaveCurrentLanguage(string languageCode)
         {
             var httpContext = EngineContext.Current.Resolve<HttpContextBase>();
@@ -108,9 +108,9 @@ namespace Nop.Web.Infrastructure.Installation
         }
 
         /// <summary>
-        /// Get a list of available languages
+        /// 获得可用语言列表。
         /// </summary>
-        /// <returns>Available installation languages</returns>
+        /// <returns>可安装语言</returns>
         public virtual IList<InstallationLanguage> GetAvailableLanguages()
         {
             if (_availableLanguages == null)

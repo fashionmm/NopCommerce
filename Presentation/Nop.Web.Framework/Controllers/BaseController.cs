@@ -23,7 +23,7 @@ namespace Nop.Web.Framework.Controllers
     public abstract class BaseController : Controller
     {
         /// <summary>
-        /// Render partial view to string
+        /// 渲染部分视图成字符串
         /// </summary>
         /// <returns>Result</returns>
         public virtual string RenderPartialViewToString()
@@ -31,7 +31,7 @@ namespace Nop.Web.Framework.Controllers
             return RenderPartialViewToString(null, null);
         }
         /// <summary>
-        /// Render partial view to string
+        /// 渲染部分视图成字符串
         /// </summary>
         /// <param name="viewName">View name</param>
         /// <returns>Result</returns>
@@ -40,7 +40,7 @@ namespace Nop.Web.Framework.Controllers
             return RenderPartialViewToString(viewName, null);
         }
         /// <summary>
-        /// Render partial view to string
+        /// 渲染部分视图成字符串
         /// </summary>
         /// <param name="model">Model</param>
         /// <returns>Result</returns>
@@ -49,7 +49,7 @@ namespace Nop.Web.Framework.Controllers
             return RenderPartialViewToString(null, model);
         }
         /// <summary>
-        /// Render partial view to string
+        /// 渲染部分视图成字符串
         /// </summary>
         /// <param name="viewName">View name</param>
         /// <param name="model">Model</param>
@@ -105,16 +105,16 @@ namespace Nop.Web.Framework.Controllers
             logger.Error(exc.Message, exc, customer);
         }
         /// <summary>
-        /// Display success notification
+        /// 显示成功的通知。
         /// </summary>
         /// <param name="message">Message</param>
-        /// <param name="persistForTheNextRequest">A value indicating whether a message should be persisted for the next request</param>
+        /// <param name="persistForTheNextRequest">标示是否应为下一个请求保留消息</param>
         protected virtual void SuccessNotification(string message, bool persistForTheNextRequest = true)
         {
             AddNotification(NotifyType.Success, message, persistForTheNextRequest);
         }
         /// <summary>
-        /// Display error notification
+        /// 显示错误提示
         /// </summary>
         /// <param name="message">Message</param>
         /// <param name="persistForTheNextRequest">A value indicating whether a message should be persisted for the next request</param>
